@@ -10,11 +10,13 @@ Create a calculator web app using React.js (and no other third-party libraries).
 * division
 * exponentiation
 
-The end user should be able to operate the calculator via both keyboard and mouse. You should (and will likely need to) give more attention to keyboard interaction. Accessibility is a key concern.
+The end user should be able to operate the calculator via mouse or via keyboard alone. You should (and will likely need to) give more attention to keyboard interaction.
 
-You don't worry about messing around with BigInt to provide higher precision than regular JavaScript floats have by default.
+You don't need to worry about messing around with BigInt to provide higher precision than regular JavaScript floats have by default.
 
-If you have any doubts or questions about our expectations for the project, please do not hesitate to reach out! Being proactive about clarifying development expectations is a necessity for the position! 
+If you are feeling stumped and finding the instructions to be a bit open-ended, know that this is expected! When we evaluate your projects, we aren't going to be comparing your calculator to some perfect "gold standard" calculator. Obviously there are certain concrete criteria, but the real test is to see that you make thoughtful, deliberate design and code architecture decisions informed by the ramifications these decisions have on the end user and those who will collaborate on the code.
+
+That said if you have any doubts or questions about our expectations for the project, please do not hesitate to reach out! Being proactive about clarifying development expectations is a necessity for the position! 
 
 ## Development Overview
 
