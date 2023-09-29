@@ -6,7 +6,7 @@ function App() {
     <div className="main">
       <section className="calculator-body">
         <input type="text" value={"TODO: make this work ;)"} id="calculator-input" />
-        <img src={logo} className="react-logo" alt="logo" />
+        <img src={logo} className="react-logo" alt="Remove Me!" />
         <div>
           <button className="calculator-button">7</button>
           <button className="calculator-button">8</button>
