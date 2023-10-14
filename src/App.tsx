@@ -36,7 +36,7 @@ function App() {
         setShowingAns(true);
         break;
       default: 
-        setExpression((prev) => showingAns ? [value] : [...prev, value]); 
+        setExpression((prev) => showingAns && !OPERATORS.includes(value) ? [value] : [...prev, value]); 
         setShowingAns(false);
         break;
     }
