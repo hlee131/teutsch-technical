@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/teutsch-technical/static/css/main.69f30968.css",
+    "main.js": "/teutsch-technical/static/js/main.d2a24e04.js",
+    "static/js/787.88217718.chunk.js": "/teutsch-technical/static/js/787.88217718.chunk.js",
+    "index.html": "/teutsch-technical/index.html",
+    "main.69f30968.css.map": "/teutsch-technical/static/css/main.69f30968.css.map",
+    "main.d2a24e04.js.map": "/teutsch-technical/static/js/main.d2a24e04.js.map",
+    "787.88217718.chunk.js.map": "/teutsch-technical/static/js/787.88217718.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69f30968.css",
+    "static/js/main.d2a24e04.js"
+  ]
+}
