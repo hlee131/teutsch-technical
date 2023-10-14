@@ -11,3 +11,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --display-fontsize: 72px; 
+  --button-fontsize: 36px; 
+}
+
+.calculator-body {
+  display: grid; 
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 5%;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.calculator-button {
+  padding: 10px;
+  cursor: pointer;
+  font-size: var(--button-fontsize);
+  background-color: white;
+  border: solid black 2px;
+  transition: background-color 100ms ease-in-out;
+  transition: color 100ms ease-in-out;
+}
+
+.calculator-button:active, .button-clicked {
+  background-color: black;
+  color: white;
+}
+
+.display { 
+  height: 20%;
+  margin-bottom: 5%; 
+  border: solid black 2px;
+  font-size: var(--display-fontsize);
+  padding-left: 20px;
+}
+
+.main {
+  box-sizing: border-box;
+  padding: 5%; 
+  width: 100vw; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  background-color: rgb(103 232 249);
+}
+
+.operator {
+  background-color: rgb(196 181 253);
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --display-fontsize: 36px; 
+    --button-fontsize: 18px;
+  }
+}
