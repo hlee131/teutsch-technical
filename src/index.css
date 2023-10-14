@@ -34,10 +34,11 @@ code {
   border: solid black 2px;
   transition: background-color 100ms ease-in-out;
   transition: color 100ms ease-in-out;
+  border-radius: 10px;
 }
 
 .calculator-button:active, .button-clicked {
-  background-color: black;
+  background-color: black !important;
   color: white;
 }
 
@@ -47,6 +48,12 @@ code {
   border: solid black 2px;
   font-size: var(--display-fontsize);
   padding-left: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex; 
+  align-items: center;
 }
 
 .main {
@@ -58,12 +65,14 @@ code {
   flex-direction: column;
 }
 
-.number {
-  background-color: rgb(103 232 249);
+.action {
+  background-color: rgb(253 186 116);
+  font-weight: bold; 
 }
 
 .operator {
   background-color: rgb(196 181 253);
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {

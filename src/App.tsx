@@ -4,6 +4,7 @@ import Button from "./Button";
 import calculate from "./calculate";
 
 export const OPERATORS = ["+", "-", "*", "/", "^"];
+export const ACTIONS = ["C", "="];
 
 /**
  * Calculates the square root of a number.
@@ -19,7 +20,7 @@ function App() {
                    "4", "5", "6", "*",
                    "7", "8", "9", "-",
                    "0", "(", ")", "+", 
-                   ".", "^", "C", "="];
+                   "C", ".", "=", "^"];
 
   const buttonRefs = useRef<{[button: string]: HTMLButtonElement}>({}); 
   
@@ -97,7 +98,7 @@ function App() {
 
   return (
     <div className="main">
-      <input className="display" value={toString(expression)} readOnly disabled/>
+      <div className="display"><p>{toString(expression)}</p></div>
       <section className="calculator-body">
           {buttons.map((val, index) => <Button value={val} onClick={onClick} key={index}
                                           ref={(ele: HTMLButtonElement) => { buttonRefs.current[val] = ele }} />)}
