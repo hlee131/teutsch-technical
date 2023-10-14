@@ -10,10 +10,12 @@ enum TokenTypes {
     VALUE, OPERATOR
 }
 
+// get the last item in an array
 export function peek<T> (list: T[]): T {
     return list.slice(-1)[0]; 
 }
 
+// returns the precedence of an operator
 function getBindingPower(operator: string) {
     switch (operator) {
         case "+":
@@ -27,9 +29,11 @@ function getBindingPower(operator: string) {
     }
 }
 
+// calculates the value of a sequence of button presses using pratt parsing
 export default function calculate(tokens: string): string {
     if (tokens.length === 0) return tokens;  
 
+    // traverses and evaluates the tree using depth first search 
     const traverseTree = (node: PrattNode): number => {
         if (node.value === "ERR") return NaN;
         
@@ -49,6 +53,7 @@ export default function calculate(tokens: string): string {
     return Number.isNaN(result) ? tokens : "" + result; 
 }
 
+// turns a series of button presses into a tree
 function exprToTree(tokens: string[], rbp: number): PrattNode {
     let curr = tokens.pop()!;
     let left: PrattNode; 
@@ -56,6 +61,8 @@ function exprToTree(tokens: string[], rbp: number): PrattNode {
     // we can't simply assign a binding power to parentheses because 
     // they're not an operator 
     if (curr === "(") {
+
+        // generate a subtree for the parenthetical expression first
         let substream: string[] = [];
         while (peek(substream) !== ")") {
             const top = tokens.pop();
@@ -71,6 +78,9 @@ function exprToTree(tokens: string[], rbp: number): PrattNode {
         left = { value: curr }; 
     }
     
+    
+    // the function only continues to build the tree as long as the
+    // operation has a higher binding power
     while (getBindingPower(peek(tokens)) > rbp) {
         left = parse_left(left, tokens); 
     } 
@@ -78,6 +88,7 @@ function exprToTree(tokens: string[], rbp: number): PrattNode {
     return left; 
 }
 
+// continuing building right subtree 
 function parse_left(left: PrattNode, tokens: string[]): PrattNode {
     let currentOperator = tokens.pop()!; 
     if (expectToken(TokenTypes.OPERATOR, currentOperator)) return { value: "ERR" }; 
@@ -85,7 +96,8 @@ function parse_left(left: PrattNode, tokens: string[]): PrattNode {
     return { value: currentOperator, leftChild: left, rightChild: exprToTree(tokens, getBindingPower(currentOperator)) };
 }
 
-
+// checks if the token fits the pattern we're expecting.
+// if the token is erroneous, it passes the error back up the tree
 function expectToken(type: TokenTypes, value: string): boolean {
     if (type === TokenTypes.VALUE && Number.isNaN(parseInt(value))) {
         alert(`Expression error: expected a number, but got "${value}"`);

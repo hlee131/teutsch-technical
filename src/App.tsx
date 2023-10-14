@@ -6,14 +6,14 @@ import calculate from "./calculate";
 export const OPERATORS = ["+", "-", "*", "/", "^"];
 export const ACTIONS = ["C", "="];
 
-/**
- * Calculates the square root of a number.
- *
- * @param x the number to calculate the root of.
- * @returns the square root if `x` is non-negative or `NaN` if `x` is negative.
- */
 function App() {
+
+  // store the current expression as a stack of button presses 
+  // for easy inserting and deletion
   const [expression, setExpression] = useState<string[]>([]);
+
+  // if we're showing the result of a calculation, pressing a number 
+  // shouldn't add the number onto the end of the answer
   const [showingAns, setShowingAns] = useState(false); 
 
   const buttons = ["1", "2", "3", "/",
@@ -24,12 +24,7 @@ function App() {
 
   const buttonRefs = useRef<{[button: string]: HTMLButtonElement}>({}); 
   
-  /**
- * Calculates the square root of a number.
- *
- * @param x the number to calculate the root of.
- * @returns the square root if `x` is non-negative or `NaN` if `x` is negative.
- */
+  // on-click handler for each calculator button
   const onClick = (value: string) => {
     switch (value) {
       case "C": 
@@ -47,6 +42,7 @@ function App() {
     }
   }
 
+  // converts the array of button presses into a single string
   const toString = (tokens: string[]) => {
     let string = "";
     tokens.forEach((value, i) => {
@@ -66,13 +62,15 @@ function App() {
     return string; 
   }
   
+  // add event listener for each key press
   useEffect(() => { 
-    
     const onKeyDown = (event: KeyboardEvent) => {
       if (Object.keys(buttonRefs.current).includes(event.key)) {
         event.preventDefault(); event.stopPropagation();
         const ele = buttonRefs.current[event.key]; 
         ele.click(); 
+
+        // animate the button press 
         ele.classList.add("button-clicked"); 
         setTimeout(() => {
             ele.classList.remove("button-clicked");

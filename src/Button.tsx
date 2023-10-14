@@ -6,8 +6,11 @@ interface ButtonProps {
     onClick: (value: string) => void
 }
 
+// component for each button on the calculator
 const Button = forwardRef(function Button({value, onClick}: ButtonProps, ref: Ref<HTMLButtonElement>) {
-    return <button ref={ref} onClick={() => onClick(value)} className={`${OPERATORS.includes(value) ? "operator" : ""} ${ACTIONS.includes(value) ? "action" : ""} calculator-button`} tabIndex={-1}>
+    return <button ref={ref} onClick={() => onClick(value)} tabIndex={-1}
+                    className={`${OPERATORS.includes(value) ? "operator" : ""} 
+                                ${ACTIONS.includes(value) ? "action" : ""} calculator-button`}>
         {value}
     </button>
 })
